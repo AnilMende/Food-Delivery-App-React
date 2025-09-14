@@ -22,6 +22,7 @@ const HeaderContainer = styled.div`
       background-image: url('/header_img.png');
       background-size: contain;
       position: relative;
+      background-repeat: no-repeat;
 
       .header-contents{
          position: absolute;
