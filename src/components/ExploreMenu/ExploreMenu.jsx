@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {menu_list} from '../../assets/assets';
 
-const ExploreMenu = () => {
+const ExploreMenu = ({category, setCategory}) => {
     return(
         <div>
             <ExploreMenuContainer id="explore-menu">
@@ -15,11 +15,16 @@ const ExploreMenu = () => {
                     {
                         menu_list.map((item, index) => {
                             return(
-                                <div key={index} className="menu-list-items">
-                                    <img src={item.menu_image} alt="menu-image" />
+                                <div
+                                  onClick={() => setCategory((prev) => prev === item.menu_name ? "All" : item.menu_name)} 
+                                  key={index} className="menu-list-items">
+                                    <img 
+                                     className={category === item.menu_name ? "active": ""}
+                                     src={item.menu_image} alt="menu-image" />
                                     <p>{item.menu_name}</p>
                                 </div>
                             )
+                            
                         })
                     }
                 </div>
@@ -79,5 +84,10 @@ const ExploreMenuContainer = styled.div`
         border: none;
         height: 2px;
         background-color: #e2e2e2;
+      }
+
+      .menu-list-items .active{
+        border: 4px solid tomato;
+        padding: 3px;
       }
 `;
