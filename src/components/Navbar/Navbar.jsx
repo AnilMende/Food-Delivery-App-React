@@ -1,45 +1,47 @@
 import React, { useState } from "react";
 import { assets } from "../../assets/assets";
 import styled from "styled-components";
-const Navbar = () => {
+import { Link } from "react-router-dom";
+
+const Navbar = ({setShowLogin}) => {
 
     const [menu, setMenu] = useState("home");
 
-    const menuItems = [
-        {
-            name: "Home",
-            type: "home"
-        },
-        {
-            name: "Menu",
-            type: "menu"
-        },
-        {
-            name: "Mobile-App",
-            type: "mobile-app"
-        },
-        {
-            name: "Contact-Us",
-            type: "contact-us"
-        }
-    ]
+    // const menuItems = [
+    //     {
+    //         name: "Home",
+    //         type: "home"
+    //     },
+    //     {
+    //         name: "Menu",
+    //         type: "menu"
+    //     },
+    //     {
+    //         name: "Mobile-App",
+    //         type: "mobile-app"
+    //     },
+    //     {
+    //         name: "Contact-Us",
+    //         type: "contact-us"
+    //     }
+    // ]
 
     return (
         <NavbarContainer id="navbar">
             <img src={assets.logo} alt="" className="logo" />
 
             <ul className="navbar-menu">
-                {/* <li className={menu === "home" ? "active": ""}>Home</li>
-                <li className={menu === "menu" ? "active": ""}>Menu</li>
-                <li className={menu === "mobile-app" ? "active": ""}>Mobile-App</li>
-                <li className={menu === "contact-us" ? "active" : ""}>Contact-Us</li> */}
-                {
+                <Link to="/" onClick={() => setMenu("home")} className={menu === "home" ? "active": ""}>Home</Link>
+                <a href="#explore-menu" onClick={() => setMenu("menu")} className={menu === "menu" ? "active": ""}>Menu</a>
+                <a href="#app-download" onClick={() => setMenu("mobile-app")} className={menu === "mobile-app" ? "active": ""}>Mobile-App</a>
+                <a href="#footer" onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact-Us</a>
+                {/* {
                     menuItems.map((value) => (
                         <li key={value.name}
                             onClick={() => setMenu(value.type)}
                             className={menu === (value.type) ? "active" : ""}>{value.name}</li>
                     ))
-                }
+                } */}
             </ul>
 
             <div className="navbar-right">
@@ -50,7 +52,7 @@ const Navbar = () => {
                     <div className="dot"></div>
                 </div>
 
-                <button>Sign In</button>
+                <button onClick={() => setShowLogin(true)}>Sign In</button>
             </div>
         </NavbarContainer>
     )
@@ -118,5 +120,55 @@ const NavbarContainer = styled.div`
       top: -8px;
       right: -8px;
      }
+
+     /* Making responsive */
+     @media (max-width:1050px){
+        
+         .logo{
+            width:140px;
+         }
+         .navbar-menu{
+           gap:20px;
+           font-size:17px;
+         }
+         .navbar-right{
+           gap:30px;
+         }
+         .navbar-right img{
+           width:22px;
+         }
+         .navbar-right button{
+           padding: 8px 25px;
+         }
+     }
+
+      @media (max-width:900px){
+        
+         .logo{
+            width:120px;
+         }
+         .navbar-menu{
+           gap:15px;
+           font-size:16px;
+         }
+         .navbar-right{
+           gap:20px;
+         }
+         .navbar-right img{
+           width:20px;
+         }
+         .navbar-right button{
+           padding: 7px 20px;
+           font-size: 15px;
+         }
+     }
+
+      @media (max-width:750px){
+        
+         .navbar-menu{
+           display: none;
+         }
+     }
+
      
 `;

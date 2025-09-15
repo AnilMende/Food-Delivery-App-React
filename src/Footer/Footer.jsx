@@ -92,4 +92,17 @@ const FooterContainer = styled.div`
         margin: 20px 0;
         border: none;
       }
+
+      /* making responsive */
+      @media (max-width:750px){
+         .footer-content{
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+         }
+
+         .footer-copyright{
+           text-align: center;
+         }
+      }
 `;

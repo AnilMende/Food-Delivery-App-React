@@ -6,7 +6,7 @@ const Header = () => {
             <div className="header-contents">
                 <h2>Order Your Favourite Food Here</h2>
                 <p>Choose from a diverse featuring a dectable array of dishes crafted with the finest ingredients and
-                   culinary expertise. Our mission is to satisfy your cravings and elevate your dining experience, one 
+                   culinary expertise.Our mission is to satisfy your cravings and elevate your dining experience, one 
                    delicious meal at a time.
                 </p>
                 <Button>View Menu</Button>
@@ -19,10 +19,10 @@ export default Header;
 const HeaderContainer = styled.div`
       height: 34vw;
       margin: 30px auto;
-      background-image: url('/header_img.png');
+      background: url('/header_img.png') no-repeat;
       background-size: contain;
       position: relative;
-      background-repeat: no-repeat;
+      
 
       .header-contents{
          position: absolute;
@@ -45,6 +45,24 @@ const HeaderContainer = styled.div`
         color: white;
         font-size: 1vw;
       }
+
+      /* making responsive */
+
+      @media (max-width:1050px){
+         .header-contents{
+           max-width: 45%;
+         }
+      }
+
+      @media (max-width:750px){
+         .header-contents{
+           max-width: 65%;
+         }
+         .header-contents p{
+          display: none;
+         }
+      }
+      
 `;
 
 const Button = styled.button`
@@ -56,4 +74,9 @@ const Button = styled.button`
       font-size: max-width(1vw, 13px);
       font-weight: 500;
       cursor: pointer;
+
+      /* making responsive */
+      @media (max-width:750px){
+         padding: 2vw 4vw;
+      }
 `;
