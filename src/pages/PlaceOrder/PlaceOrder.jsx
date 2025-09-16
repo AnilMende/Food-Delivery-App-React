@@ -2,9 +2,9 @@ import React from "react";
 
 const PlaceOrder = () => {
     return(
-        <div>
+        <form className="place-order">
 
-        </div>
+        </form>
     )
 }
 export default PlaceOrder;

@@ -24,17 +24,37 @@ const StoreContextProvider = (props) => {
         setCartItems((prev) => ({...prev,[itemId]:prev[itemId] - 1}));
     }
 
-    useEffect(() => {
-        console.log(cartItems);
+    // To calculate the total amount of the cart
 
-    }, [cartItems]);
+    const getTotalCartAmount = () => {
+
+        let totalAmount = 0;
+
+        for(const item in cartItems){
+            // if the items count is greater than 0 that is added to cart and we calculate the total amount
+            if(cartItems[item] > 0){
+                let itemInfo = food_list.find((product) => product._id === item);
+                totalAmount += itemInfo.price * cartItems[item];
+            }
+        }
+        // if you avoid the return of totalAmount the cart total will not get updated
+        return totalAmount;
+    }
+
+    // This is to check the cart Items
+
+    // useEffect(() => {
+    //     console.log(cartItems);
+
+    // }, [cartItems]);
     
     const contextValue = {
         food_list,
         cartItems,
         setCartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        getTotalCartAmount
     }
 
     return(
